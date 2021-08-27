@@ -4,6 +4,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.BookOperations.CreateBookCommand;
 using WebApi.BookOperations.GetBooks;
+using WebApi.BookOperations.GetByIdQuery;
+using WebApi.BookOperations.UpdateBook;
 using WebApi.DbOperations;
 using static WebApi.BookOperations.CreateBookCommand.CreateBookCommand;
 
@@ -26,10 +28,20 @@ namespace  WebApi.AddControllers
             return Ok(result);
         }
         [HttpGet("{id}")]
-        public Book GetByBookId(int id)
+        public IActionResult GetByBookId(int id)
         {
-            var bookList = _context.Books.Where(book=> book.Id==id).SingleOrDefault();
-            return bookList;
+            GetByIdQuery getById = new GetByIdQuery(_context);
+            try
+            {
+                getById.model = new BookModel();
+                getById.Id = id;
+                getById.Handle();
+            }
+            catch (Exception ex)
+            { 
+                return BadRequest(ex.Message);
+            }
+            return Ok(getById.model);
         }
         [HttpPost]
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
@@ -42,29 +54,29 @@ namespace  WebApi.AddControllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
             return Ok("Başarıyla Eklendi");
             
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateBook(int id, [FromBody] Book updatedBook)
+        public IActionResult UpdateBook(int id, [FromBody] UpdatedBookModel updatedBook)
         {
-            var book = _context.Books.SingleOrDefault(b=>b.Id == id);
-            if (book is null)
+            UpdateBook update = new UpdateBook(_context);
+            try
             {
-                return BadRequest();
+                update.Id = id;
+                update.model = updatedBook;
+                update.Handle();
+                
             }
-            else
+            catch (Exception ex)
             {
-                book.GenreId = updatedBook.GenreId != default ? updatedBook.GenreId : book.GenreId;
-                book.PageCount = updatedBook.PageCount != default ? updatedBook.PageCount : book.PageCount;
-                book.PublishDate = updatedBook.PublishDate != default ? updatedBook.PublishDate : book.PublishDate;
-                book.Title = updatedBook.Title != default ? updatedBook.Title : book.Title;
-                _context.SaveChanges();
+                
+                return BadRequest(ex.Message);
+            }
+           
                 return Ok();
-            }
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)

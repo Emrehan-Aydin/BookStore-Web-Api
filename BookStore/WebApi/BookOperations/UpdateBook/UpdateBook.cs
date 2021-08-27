@@ -4,11 +4,10 @@ using System.Linq;
 using WebApi.Common;
 using WebApi.DbOperations;
 
-namespace WebApi.BookOperations.GetBooks
+namespace WebApi.BookOperations.UpdateBook
 {
     public class UpdatedBookModel
     {
-        public int Id {get;set;}
         public string Title { get; set; }
         public int GenreId { get; set; }
         public int PageCount { get; set; }
@@ -18,6 +17,7 @@ namespace WebApi.BookOperations.GetBooks
     {
         private readonly BookStoreDbContext _dbContext;
         public UpdatedBookModel model;
+        public int Id { get; set; }
 
         public UpdateBook(BookStoreDbContext Dbcontext)
         {
@@ -25,7 +25,7 @@ namespace WebApi.BookOperations.GetBooks
         }
         public void Handle()
         {
-            var book = _dbContext.Books.SingleOrDefault(b=>b.Id == model.Id);
+            var book = _dbContext.Books.SingleOrDefault(b=>b.Id == this.Id);
             if (book is null)
             {
                 throw new InvalidOperationException("Güncellenecek bir kitap bulunamadı!");
