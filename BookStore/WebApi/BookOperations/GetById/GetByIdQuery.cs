@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using WebApi.Common;
+using AutoMapper;
 using WebApi.DbOperations;
 
 namespace WebApi.BookOperations.GetByIdQuery
@@ -16,12 +15,13 @@ namespace WebApi.BookOperations.GetByIdQuery
     public class GetByIdQuery
     {
         private readonly BookStoreDbContext _dbContext;
-        public BookModel model {get;set;}
+        private IMapper _mapper;
         public int Id { get; set; }
 
-        public GetByIdQuery(BookStoreDbContext Dbcontext)
+        public GetByIdQuery(BookStoreDbContext Dbcontext,IMapper mapper)
         {
             _dbContext = Dbcontext;
+            _mapper = mapper;
         }
 
         public BookModel Handle()
@@ -33,10 +33,7 @@ namespace WebApi.BookOperations.GetByIdQuery
             }
             else
             {
-                model.Title = book.Title;
-                model.Genre = ((GenreEnum)book.GenreId).ToString();
-                model.PageCount = book.PageCount;
-                model.PublishDate = book.PublishDate.ToString("dd/MM/yyy");
+                BookModel model = _mapper.Map<BookModel>(book);
                 return model;
             }  
         }

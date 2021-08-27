@@ -32,3 +32,5 @@ D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\Microsoft.EntityFramewo
 D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
 D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\AutoMapper.dll
+D:\VS Source\Web API 2\BookStore\WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
