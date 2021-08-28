@@ -13,7 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using WebApi.CustomExceptionMiddleware;
 using WebApi.DbOperations;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -38,6 +40,7 @@ namespace WebApi
             });
             services.AddDbContext<BookStoreDbContext>(options=> options.UseInMemoryDatabase(databaseName: "BookStoreDb"));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddSingleton<ILoggerService,ConsoleLogger>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,8 @@ namespace WebApi
 
             app.UseAuthorization();
 
+            app.UseCustomExceptionMiddle();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
