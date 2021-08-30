@@ -4,8 +4,9 @@ using WebApi.Common;
 using WebApi.DbOperations;
 using System;
 using AutoMapper;
+using WebApi.Entities;
 
-namespace WebApi.BookOperations.CreateBookCommand
+namespace WebApi.Application.BookOperations.Commands.CreateBookCommand
 {
     public class CreateBookCommand
     {
@@ -24,10 +25,6 @@ namespace WebApi.BookOperations.CreateBookCommand
             if(book is not null)
                 throw new InvalidOperationException("Kitap Zaten Mevcut!");
             book = _mapper.Map<Book>(Model);
-            // book.Title = Model.Title;
-            // book.GenreId = Model.GenreId;
-            // book.PageCount=Model.PageCount;
-            // book.PublishDate = Model.PublishDate;
             _dbContext.Add(book);
             _dbContext.SaveChanges();
 

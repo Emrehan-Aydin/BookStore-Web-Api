@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.BookOperations.CreateBookCommand;
-using WebApi.BookOperations.GetBooks;
-using WebApi.BookOperations.GetByIdQuery;
-using WebApi.BookOperations.RemoveBook;
-using WebApi.BookOperations.UpdateBook;
+using WebApi.Application.BookOperations.Commands.CreateBookCommand;
+using WebApi.Application.BookOperations.Commands.RemoveBook;
+using WebApi.Application.BookOperations.Commands.UpdateBook;
+using WebApi.Application.BookOperations.Queries.GetBooks;
+using WebApi.Application.BookOperations.Queries.GetByIdQuery;
 using WebApi.DbOperations;
-using static WebApi.BookOperations.CreateBookCommand.CreateBookCommand;
+using static WebApi.Application.BookOperations.Commands.CreateBookCommand.CreateBookCommand;
 
-namespace  WebApi.AddControllers
+namespace WebApi.AddControllers
 {
     [ApiController]
     [Route("[Controller]s")]
@@ -29,7 +25,7 @@ namespace  WebApi.AddControllers
         [HttpGet]
         public IActionResult GetBooks()
         {
-            GetBooksQuery query = new GetBooksQuery(_context);
+            GetBooksQuery query = new GetBooksQuery(_context,_mapper);
             var result = query.Handle();
             return Ok(result);
         }

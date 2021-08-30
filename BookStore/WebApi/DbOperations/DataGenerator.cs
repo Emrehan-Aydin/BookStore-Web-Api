@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using WebApi.Entities;
 
 namespace WebApi.DbOperations{
     public class DataGenerator
@@ -16,7 +17,26 @@ namespace WebApi.DbOperations{
             {
                 return;   // Data was already seeded
             }
-               context.Books.AddRange(
+
+            context.Genres.AddRange(
+                new Genre{
+                    Name = "Lean Startup", 
+                    IsActive = true,
+                },
+                new Genre{
+                   Name = "HerLnad", 
+                   IsActive = true,
+               },
+                new Genre{
+                   Name = "Romance", 
+                   IsActive = true,
+               },
+                new Genre{
+                   Name = "Stories", 
+                   IsActive = true,
+               });
+            
+            context.Books.AddRange(
                 new Book{
                 //Id = 1,
                 Title = "Lean a",
