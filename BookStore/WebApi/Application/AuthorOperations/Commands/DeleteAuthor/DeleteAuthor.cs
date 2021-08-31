@@ -19,7 +19,8 @@ namespace WebApi.Application.AuthorsOperations.Command.DeleteAuthor
             var deleteAuthor = _context.Authors.SingleOrDefault(Aut=>Aut.Id == Id);
             if(deleteAuthor is null)
                 throw new InvalidOperationException("Böyle bir yazar Bulunamadı!");
-
+            if(_context.Books.FirstOrDefault(B=>B.AuthorId==deleteAuthor.Id) is not null)
+                throw new InvalidOperationException("Kitabı Yayında olan bir yazarı silemezsiniz!.");
             _context.Remove(deleteAuthor);
             _context.SaveChanges();
         }

@@ -40,6 +40,7 @@ namespace WebApi.DbOperations{
                 //Id = 1,
                     Title = "Lean a",
                     GenreId = 1,
+                    AuthorId = 1,
                     PageCount = 200,
                     PublishDate = new DateTime(2001,06,12)
                 },
@@ -47,6 +48,7 @@ namespace WebApi.DbOperations{
                 //Id = 2,
                     Title = "Lean b",
                     GenreId = 1,
+                    AuthorId = 2,
                     PageCount = 200,
                     PublishDate = new DateTime(2001,06,12)
                 },
@@ -54,7 +56,8 @@ namespace WebApi.DbOperations{
                 //Id = 3,
                     Title = "Lean c",
                     GenreId = 1,
-                     PageCount = 200,
+                    AuthorId = 3,
+                    PageCount = 200,
                     PublishDate = new DateTime(2001,06,12)
                 });
 
