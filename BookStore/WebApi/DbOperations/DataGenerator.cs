@@ -17,7 +17,6 @@ namespace WebApi.DbOperations{
             {
                 return;   // Data was already seeded
             }
-
             context.Genres.AddRange(
                 new Genre{
                     Name = "Lean Startup", 
@@ -39,25 +38,45 @@ namespace WebApi.DbOperations{
             context.Books.AddRange(
                 new Book{
                 //Id = 1,
-                Title = "Lean a",
-                GenreId = 1,
-                PageCount = 200,
-                PublishDate = new DateTime(2001,06,12)
+                    Title = "Lean a",
+                    GenreId = 1,
+                    PageCount = 200,
+                    PublishDate = new DateTime(2001,06,12)
                 },
                 new Book{
                 //Id = 2,
-                Title = "Lean b",
-                GenreId = 1,
-                PageCount = 200,
-                PublishDate = new DateTime(2001,06,12)
+                    Title = "Lean b",
+                    GenreId = 1,
+                    PageCount = 200,
+                    PublishDate = new DateTime(2001,06,12)
                 },
                  new Book{
                 //Id = 3,
-                Title = "Lean c",
-                GenreId = 1,
-                PageCount = 200,
-                PublishDate = new DateTime(2001,06,12)
+                    Title = "Lean c",
+                    GenreId = 1,
+                     PageCount = 200,
+                    PublishDate = new DateTime(2001,06,12)
                 });
+
+            context.Authors.AddRange(
+                new Author{
+                    Name = "Ali",
+                    Surname = "Kemal",
+                    DateOfBirth = new DateTime(1976,08,11)
+                    
+                },
+                 new Author{
+                    Name = "Mehmet",
+                    Surname = "Akif",
+                    DateOfBirth = new DateTime(1967,12,1)
+                    
+                },
+                 new Author{
+                    Name = "Burak",
+                    Surname = "Koç",
+                    DateOfBirth = new DateTime(1984,3,24)
+                });
+                
                 context.SaveChanges();
             }
         }

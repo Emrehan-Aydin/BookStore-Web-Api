@@ -29,14 +29,11 @@ namespace WebApi.Application.BookOperations.Queries.GetByIdQuery
         {
             var book = _dbContext.Books.Include(b=>b.Genre).Include(b=>b.Genre).Where(book=> book.Id==this.Id).FirstOrDefault();
             if(book is null)
-            {
                 throw new InvalidOperationException("Kitap Bulunamadı");
-            }
-            else
-            {
-                BookModel model = _mapper.Map<BookModel>(book);
-                return model;
-            }  
+
+            BookModel model = _mapper.Map<BookModel>(book);
+            return model;
+
         }
         
     }
