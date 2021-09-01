@@ -8,8 +8,8 @@ namespace WebApi.Application.AuthorsOperations.Command.DeleteAuthor
     {
         public int Id { get; set; }
 
-        private readonly BookStoreDbContext _context;
-        public DeleteAuthor(BookStoreDbContext context)
+        private readonly IBookStoreDbContext _context;
+        public DeleteAuthor(IBookStoreDbContext context)
         {
             _context = context;
         }
@@ -21,7 +21,7 @@ namespace WebApi.Application.AuthorsOperations.Command.DeleteAuthor
                 throw new InvalidOperationException("Böyle bir yazar Bulunamadı!");
             if(_context.Books.FirstOrDefault(B=>B.AuthorId==deleteAuthor.Id) is not null)
                 throw new InvalidOperationException("Kitabı Yayında olan bir yazarı silemezsiniz!.");
-            _context.Remove(deleteAuthor);
+            _context.Authors.Remove(deleteAuthor);
             _context.SaveChanges();
         }
 

@@ -10,11 +10,11 @@ namespace WebApi.Application.BookOperations.Commands.CreateBookCommand
 {
     public class CreateBookCommand
     {
-        private readonly BookStoreDbContext _dbContext;
+        private readonly IBookStoreDbContext _dbContext;
         private readonly IMapper _mapper;
         public CreateBookModel Model {get;set;}
 
-        public CreateBookCommand(BookStoreDbContext Dbcontext, IMapper mapper)
+        public CreateBookCommand(IBookStoreDbContext Dbcontext, IMapper mapper)
         {
             _dbContext = Dbcontext;
             _mapper = mapper;
@@ -25,7 +25,7 @@ namespace WebApi.Application.BookOperations.Commands.CreateBookCommand
             if(book is not null)
                 throw new InvalidOperationException("Kitap Zaten Mevcut!");
             book = _mapper.Map<Book>(Model);
-            _dbContext.Add(book);
+            _dbContext.Books.Add(book);
             _dbContext.SaveChanges();
 
         }
