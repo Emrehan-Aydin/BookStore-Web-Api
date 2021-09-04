@@ -6,7 +6,7 @@ namespace WebApi.Application.GerneOperation.Queries.GetGenreDetails
     {
         public GetGenreDetailsValidator()
         {
-            RuleFor(query=>query.GenreId).GreaterThan(0);   
+            RuleFor(query=>query.GenreId).GreaterThan(0).NotEmpty();   
         }
     }
 }

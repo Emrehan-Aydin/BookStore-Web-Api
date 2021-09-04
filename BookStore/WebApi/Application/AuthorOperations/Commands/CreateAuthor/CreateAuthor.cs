@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using AutoMapper;
 using WebApi.DbOperations;
 using WebApi.Entities;
@@ -20,6 +21,16 @@ namespace WebApi.Application.AuthorsOperations.Command.CreateAuthor
         public void Handle()
         {
             var newAuthor = _mapper.Map<Author>(newAuthorModel);
+
+            var IsHaveAuthor = _context.Authors
+            .SingleOrDefault(A=>
+                A.DateOfBirth == newAuthor.DateOfBirth && 
+                A.Name == newAuthor.Name &&
+                A.Surname == newAuthor.Surname
+            );
+
+            if(IsHaveAuthor is not null)
+                throw new InvalidOperationException("Böyle Bir Yazar Mevcut!");
             _context.Authors.Add(newAuthor);
             _context.SaveChanges();
 

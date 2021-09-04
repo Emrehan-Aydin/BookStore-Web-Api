@@ -23,7 +23,7 @@ namespace WebApi.Application.BookOperations.Commands.CreateBookCommand
         {
             var book = _dbContext.Books.SingleOrDefault(b=>b.Title == Model.Title);
             if(book is not null)
-                throw new InvalidOperationException("Kitap Zaten Mevcut!");
+                throw new InvalidOperationException("Kitap Zaten Mevcut.");
             book = _mapper.Map<Book>(Model);
             _dbContext.Books.Add(book);
             _dbContext.SaveChanges();

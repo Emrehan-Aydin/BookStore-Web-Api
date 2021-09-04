@@ -20,7 +20,7 @@ namespace WebApi.Application.GerneOperation.Commands.CreateGenre
         {
             var genre = _context.Genres.SingleOrDefault(g=>g.Name == model.Name);
             if(genre is not null)
-                throw new InvalidOperationException("Böyle bir tür zaten var!");
+                throw new InvalidOperationException("Böyle bir tür zaten var.");
 
             genre = new Genre();
             genre.Name = model.Name;

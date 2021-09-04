@@ -15,7 +15,7 @@ namespace WebApi.Application.GerneOperation.Commands.DeleteGenre
         public void Handle()
         {
             var genre = _context.Genres.SingleOrDefault(genre=>genre.Id == GenreId);
-            if(genre.Name is null)
+            if(genre is null)
                 throw new InvalidOperationException("Böyle bir kitap türü bulunamadı!");
 
             _context.Genres.Remove(genre);

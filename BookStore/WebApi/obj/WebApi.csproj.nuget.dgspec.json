@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj": {}
+    "d:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "D:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj": {
+    "d:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "d:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "D:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\emreh\\.nuget\\packages\\",
-        "outputPath": "D:\\VS Source\\Web API 2\\BookStore\\WebApi\\obj\\",
+        "projectPath": "d:\\VS Source\\Web API 2\\BookStore\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\Emrehan\\.nuget\\packages\\",
+        "outputPath": "d:\\VS Source\\Web API 2\\BookStore\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\VS SHARED\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\emreh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Emrehan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -91,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
